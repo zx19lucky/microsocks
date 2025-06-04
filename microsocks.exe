@@ -1,0 +1,12 @@
+version: 1.0.{build}
+image: Visual Studio 2019
+
+build_script:
+  - git clone https://github.com/rofl0r/microsocks.git
+  - cd microsocks
+  - mkdir build
+  - gcc -O2 -Wall microsocks.c -o build/microsocks.exe
+
+artifacts:
+  - path: microsocks\build\microsocks.exe
+    name: microsocks
