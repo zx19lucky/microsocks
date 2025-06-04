@@ -8,7 +8,7 @@ install:
 build_script:
   - git clone https://github.com/rofl0r/microsocks.git
   - cd microsocks
-  - bash -lc "gcc -O2 -Wall *.c -lws2_32 -o microsocks.exe"
+  - bash -lc "gcc -O2 -Wall socks.c microsocks.c utils.c -lws2_32 -o microsocks.exe"
 
 artifacts:
   - path: microsocks\microsocks.exe
