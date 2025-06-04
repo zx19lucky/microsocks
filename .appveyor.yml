@@ -2,13 +2,13 @@ image: Visual Studio 2022
 
 install:
   - choco install -y msys2
-  - refreshenv
-  - set PATH=%PATH%;C:\tools\msys64\usr\bin
+  - set PATH=C:\tools\msys64\usr\bin;C:\tools\msys64\mingw64\bin;%PATH%
+  - C:\tools\msys64\usr\bin\bash -lc "pacman -Sy --noconfirm mingw-w64-x86_64-gcc"
 
 build_script:
   - git clone https://github.com/rofl0r/microsocks.git
   - cd microsocks
-  - bash -lc "gcc -O2 -Wall *.c -static -lws2_32 -o microsocks.exe"
+  - bash -lc "gcc -O2 -Wall *.c -lws2_32 -o microsocks.exe"
 
 artifacts:
   - path: microsocks\microsocks.exe
