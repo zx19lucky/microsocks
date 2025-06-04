@@ -3,7 +3,7 @@ image: Visual Studio 2019
 
 install:
   - choco install mingw -y
-  - set PATH=C:\tools\mingw64\bin;%PATH%
+  - set PATH=C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin;%PATH%
 
 build_script:
   - gcc -O2 -Wall microsocks.c -o microsocks.exe
