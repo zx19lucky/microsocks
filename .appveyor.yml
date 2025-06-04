@@ -7,7 +7,7 @@ install:
 
 build_script:
   - git clone https://github.com/rofl0r/microsocks.git
-  - bash -lc "cd \"$APPVEYOR_BUILD_FOLDER/microsocks\" && gcc -O2 -Wall socks.c microsocks.c utils.c -lws2_32 -o microsocks.exe"
+  - bash -lc "cd \$(cygpath \"$APPVEYOR_BUILD_FOLDER/microsocks\") && gcc -O2 -Wall socks.c microsocks.c utils.c -lws2_32 -o microsocks.exe"
 
 artifacts:
   - path: microsocks\microsocks.exe
