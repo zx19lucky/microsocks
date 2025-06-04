@@ -1,16 +1,19 @@
-version: 1.0.{build}
-image: Visual Studio 2019
+image: Visual Studio 2022
+
+environment:
+  MINGW_PATH: C:\msys64\mingw64\bin
 
 install:
-  - choco install mingw -y
+  - choco install -y msys2
   - refreshenv
-  - set PATH=%PATH%;C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin
-
+  - set PATH=%PATH%;C:\tools\msys64\usr\bin
+  - C:\tools\msys64\usr\bin\bash -lc "pacman -Sy --noconfirm mingw-w64-x86_64-gcc make"
 
 build_script:
-  - gcc --version
-  - gcc -O2 -Wall *.c -o microsocks.exe
+  - git clone https://github.com/rofl0r/microsocks.git
+  - cd microsocks
+  - C:\tools\msys64\usr\bin\bash -lc "cd $PWD && make CC=x86_64-w64-mingw32-gcc"
 
 artifacts:
-  - path: microsocks.exe
-    name: microsocks
+  - path: microsocks\microsocks.exe
+    name: microsocks-exe
