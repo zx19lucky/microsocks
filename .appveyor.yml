@@ -6,7 +6,6 @@ install:
   - set PATH=C:\ProgramData\chocolatey\lib\mingw\tools\install\bin;%PATH%
 
 build_script:
-  - git clone https://github.com/rofl0r/microsocks.git .
   - gcc -O2 -Wall *.c -o microsocks.exe
 
 artifacts:
